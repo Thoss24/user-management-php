@@ -6,11 +6,13 @@ function getUsers() {
    
     foreach($users as $user) {
         echo "<div class='user-shell' id='$user->id' key>
-        <p>Name: <strong>$user->name</strong></p>
-        <p>Email: <strong>$user->email</strong></p>
-        <p>Position: <strong>$user->position</strong></p>
-        <p>Last Edited: <strong>$user->last_edited</strong></p>
+        <p><strong>Name:</strong> $user->name</p>
+        <p><strong>Email:</strong> $user->email</p>
+        <p><strong>Position:</strong> $user->position</p>
+        <p><strong>Last Edited:</strong> $user->last_edited</p>
+        <div>
         <button class='edit-button'>Edit</button>
+        </div>
         </div>";
     }
 }
