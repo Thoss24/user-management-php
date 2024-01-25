@@ -22,17 +22,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 
 } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $stmt = $pdo->prepare('SELECT * from staff_members');
-    $stmt->execute();
 
-    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode($users);
+    if ($_GET) {
+        $id = $_GET['id'];
+        $stmt = $pdo->prepare('SELECT * FROM staff_members WHERE id = :id');
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+
+        $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($user);
+        
+    } else {
+        $stmt = $pdo->prepare('SELECT * FROM staff_members');
+        $stmt->execute();
+
+        $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($users);
+    }
 
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $position = $_POST['select-position'];
+    $request_data = json_decode(file_get_contents('php://input'), true);
+
+    $name = $request_data['name'];
+    $email = $request_data['email'];
+    $position = $request_data['position'];
 
     $stmt = $pdo->prepare('INSERT INTO staff_members (name, email, position) VALUES (:name, :email, :position)');
     $stmt->bindValue(':name', $name);
@@ -40,6 +54,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     $stmt->bindValue(':position', $position);
 
     $stmt->execute();
+}
+else if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
+
+    $request_data = json_decode(file_get_contents('php://input'), true);
+
+    echo $request_data;
+
+    $id = $request_data;
+
+    $stmt = $pdo->prepare('DELETE FROM staff_members WHERE id = :id');
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+
 }
 else {
     http_response(405);

@@ -16,7 +16,7 @@ header {
 
 /* new user form */
 
-.new-user-form-container {
+#new-user-form-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,7 +25,31 @@ header {
     width: 100%;
 }
 
-.new-user-form {
+#new-user-form {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* edit user form */
+
+#edit-user-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+#edit-user-form-container legend {
+    text-decoration: underline;
+    font-size: 21px;
+}
+
+#edit-user-form {
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -49,5 +73,5 @@ header {
     flex-direction: column;
     padding: 5px;
     border-radius: 8px;
-    background-color: lightgray;
+    background-color: rgba(87, 87, 87, 0.2);
 }

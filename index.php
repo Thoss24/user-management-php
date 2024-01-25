@@ -1,19 +1,20 @@
 <?php
-    require 'requests.php';
+    require './users.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./requests.js"></script>
     <link rel="stylesheet" type="text/css" href="index.css">
     <title>Document</title>
 </head>
 <body>
     <header><h2>User Management System</h2></header>
-    <div class="new-user-form-container">
-    <form action='api.php' method='POST' class="new-user-form">
+    <div id="new-user-form-container">
+    <form method='POST' id="new-user-form">
         <div>
             <label for="name" >Name: </label>
             <input name="name" type="text" id="name">
@@ -37,7 +38,8 @@
 
     <div class="users-list">
         <?php
-        echo getUsers();
+        // for each user in database create div with elements containing user data
+        getUsers()
         ?>
     </div>
 
