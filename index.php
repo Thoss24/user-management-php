@@ -6,8 +6,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="./requests.js"></script>
     <link rel="stylesheet" type="text/css" href="index.css">
     <title>Document</title>
 </head>
@@ -21,7 +19,7 @@
         </div>
         <div>
             <label for="email" >Email: </label>
-            <input name="email" type="text" id="email">
+            <input name="email" type="text" id="email" >
         </div>
         <div>
             <label for="position">Position: </label>
@@ -34,14 +32,21 @@
         </div>
         <button type="submit">Submit</button>
     </form>
+    <div>
+    <label>Filter Staff</label>
+    <select name='filter-users' id='filter-users'>
+        <option value='All Staff'>All Staff</option>
+        <option value='Lecturer'>Lecturer</option>
+        <option value='Reader'>Reader</option>
+        <option value='Senior Lecturer'>Senior Lecturer</option>
+        <option value='Professor'>Professor</option>
+    </select>
     </div>
-
+    </div>
     <div class="users-list">
-        <?php
-        // for each user in database create div with elements containing user data
-        getUsers()
-        ?>
+    
     </div>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./requests.js"></script>
 </body>
 </html>

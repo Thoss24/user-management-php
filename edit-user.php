@@ -14,5 +14,6 @@
 <?php
     getUser()
 ?>
+    <script src="./requests.js"></script>
 </body>
 </html>

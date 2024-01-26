@@ -67,6 +67,21 @@ else if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
     $stmt->bindValue(':id', $id);
     $stmt->execute();
 
+} else if ($_SERVER['REQUEST_METHOD'] === 'PATCH') {
+
+    $request_data = json_decode(file_get_contents('php://input'), true);
+    $name = $request_data['name'];
+    $email = $request_data['email'];
+    $position = $request_data['position'];
+
+    echo $request_data;
+
+    $id = $request_data;
+
+    $stmt = $pdo->prepare('DELETE FROM staff_members WHERE id = :id');
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+
 }
 else {
     http_response(405);
