@@ -73,13 +73,13 @@ else if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
     $name = $request_data['name'];
     $email = $request_data['email'];
     $position = $request_data['position'];
+    $id = $request_data['id'];
 
-    echo $request_data;
-
-    $id = $request_data;
-
-    $stmt = $pdo->prepare('DELETE FROM staff_members WHERE id = :id');
+    $stmt = $pdo->prepare('UPDATE staff_members SET name = :name, email = :email, position = :position, last_edited = NOW() WHERE id = :id');
     $stmt->bindValue(':id', $id);
+    $stmt->bindValue(':name', $name);
+    $stmt->bindValue(':email', $email);
+    $stmt->bindValue(':position', $position);
     $stmt->execute();
 
 }

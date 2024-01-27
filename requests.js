@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const editBtn = $('<button class="edit-button">Edit</button>');
 
       editBtn.on("click", (e) => {
-        window.location = `edit-user.php?=${user.id}`;
+        window.location = `edit-user.php?${user.id}`;
       });
 
       const deleteBtn = $('<button class="delete-button">Delete</button>');
@@ -107,29 +107,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     location.reload();
   });
-
-  // edit user handler
-  $('#edit-user-form').on('submit', (e) => {
-
-    e.preventDefault()
-
-    const name = $('#edit-name').value
-    const email = $('#edit-email').value
-    const position = $('#edit-position').value
-
-    console.log(window.location.href)
-
-    const user = {
-        name,
-        email,
-        position
-    };
-
-    $.ajax({
-        type: 'PATCH',
-        url: 'api.php',
-        data: JSON.stringify(user)
-    })
-  })
 
 });
