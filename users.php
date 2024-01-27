@@ -1,28 +1,5 @@
 <?php
 
-    function getUsers() {
-            
-        $users_data = file_get_contents('http://localhost/user_management_php/api.php');
-        $users = json_decode($users_data);
-
-        if (count($users) > 0) {
-            foreach($users as $user) {
-                echo "<div class='user-shell' id='$user->id' key>
-                <p class='user-name'><strong>Name:</strong> $user->name</p>
-                <p><strong>Email:</strong> $user->email</p>
-                <p><strong>Position:</strong> $user->position</p>
-                <p><strong>Last Edited:</strong> $user->last_edited</p>
-                <div>
-                <button class='edit-button'>Edit</button>
-                <button class='delete-button'>Delete</button>
-                </div>
-                </div>";
-            }
-        } else {
-            echo "<div><h2>Database Empty.</h2></div>";
-        }
-    }
-
     function getUser() {
 
         $id = $_SERVER['QUERY_STRING'];

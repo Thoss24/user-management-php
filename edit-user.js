@@ -23,6 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
             url: 'api.php',
             data: JSON.stringify(user)
         })
+
+        window.location = 'http://localhost/user_management_php/'
       })    
 });
   
